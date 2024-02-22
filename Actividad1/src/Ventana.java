@@ -6,9 +6,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
@@ -31,12 +36,102 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 	}
 	
+	
 	public void iniciarComponentes() {
+		//this.login();
+		//this.registro();
+		this.admin();
+	}
+	public void admin() {
+		//añadir panel
+		JPanel adminPanel= new JPanel();
+		adminPanel.setSize(this.getWidth(),this.getHeight());
+		adminPanel.setLocation(0, 0);
+		adminPanel.setBackground(new Color(255, 171, 106));
+		adminPanel.setLayout(null);
+		//añadir menu
+		JMenuBar barra=new JMenuBar();
+		JMenu menuFile=new JMenu("Archivo");
+		JMenuItem openItem=new JMenuItem("Abrir archivo");
+		JMenuItem crearItem=new JMenuItem("Crear archivo");
+		//Contenido Panel
+		JLabel usuarios=new JLabel("Usuarios", 0);
+		usuarios.setFont(new Font("Impact",Font.BOLD,26));
+		usuarios.setSize(920, 40);
+		usuarios.setForeground(Color.white);
+		usuarios.setLocation(0, 20);
+		usuarios.setOpaque(true);
+		usuarios.setBackground(new Color(255, 40, 40));
+		adminPanel.add(usuarios);
+
+		JLabel Titulowidget=new JLabel("Total de usuarios:");
+		Titulowidget.setBounds(65, 80, 160, 80);
+		Titulowidget.setOpaque(false); 
+		Titulowidget.setBackground(new Color(255,255,255));
+		adminPanel.add(Titulowidget);
 		
+		JLabel Usuarioswidget=new JLabel("100");
+		Usuarioswidget.setBounds(105, 115, 160, 80);
+		Usuarioswidget.setOpaque(false); 
+		Usuarioswidget.setBackground(new Color(255,255,255));
+		adminPanel.add(Usuarioswidget);
+		
+		JLabel widget=new JLabel("");
+		widget.setBounds(40, 100, 160, 80);
+		widget.setOpaque(true); 
+		widget.setBackground(new Color(255, 243, 124));
+		adminPanel.add(widget);
+		
+		
+		
+		JButton download=new JButton("Exportar");
+		download.setBounds(730, 180, 140, 30);
+		download.setBackground(new Color(231, 0, 0));
+		download.setForeground(Color.WHITE);
+		adminPanel.add(download);
+		
+		JButton añadir=new JButton("Añadir");
+		añadir.setBounds(585, 180, 140, 30);
+		añadir.setBackground(new Color(231, 0, 0));
+		añadir.setForeground(Color.WHITE);
+		adminPanel.add(añadir);
+		
+		String[] title= {"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"};
+		String[][] datos= {
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"},
+				{"No. Control","Nombre","Apellido", "Semestre", "Promedio", "Acciones"}
+		};
+		
+		JTable tablaDatos=new JTable(datos,title);
+		tablaDatos.setBounds(40, 210, 830, 200);
+		JScrollPane table_scroll = new JScrollPane(tablaDatos);
+		table_scroll.setBounds(40, 210, 830, 200);
+		adminPanel.add(table_scroll);
+		
+		JLabel Tablawidget=new JLabel("");
+		Tablawidget.setBounds(40, 210, 830, 200);
+		Tablawidget.setOpaque(true); 
+		Tablawidget.setBackground(new Color(255,255,255));
+		adminPanel.add(Tablawidget);
+		//añadir tabla
+		barra.add(menuFile);
+		menuFile.add(openItem);
+		menuFile.add(crearItem);
+		this.setJMenuBar(barra);
+		this.add(adminPanel);
+	}
+	public void registro() {
 		JPanel registro= new JPanel();
 		registro.setSize(this.getWidth()/2,this.getHeight());
 		registro.setLocation(460, 0);
-		registro.setBackground(new Color(238, 255, 116));
+		registro.setBackground(new Color(217, 181, 255));
 		registro.setLayout(null);
 		
 		JLabel registroT=new JLabel("Registro", 0);
@@ -45,12 +140,12 @@ public class Ventana extends JFrame{
 		registroT.setForeground(Color.white);
 		registroT.setLocation(0, 20);
 		registroT.setOpaque(true);
-		registroT.setBackground(Color.BLACK);
+		registroT.setBackground(new Color(172, 38, 222));
 		registro.add(registroT);
 		
 		JLabel usuarioR=new JLabel("Nombre de Usuario",0);
 		usuarioR.setFont(new Font("Arial",Font.BOLD,16));
-		usuarioR.setBackground(new Color(227, 74, 26));
+		usuarioR.setBackground(new Color(90, 101, 241));
 		usuarioR.setSize(200,30);
 		usuarioR.setLocation(130,150);
 		usuarioR.setOpaque(true);
@@ -63,7 +158,7 @@ public class Ventana extends JFrame{
 		
 		JLabel bio=new JLabel("Bio",0);
 		bio.setFont(new Font("Arial",Font.BOLD,16));
-		bio.setBackground(new Color(227, 74, 26));
+		bio.setBackground(new Color(90, 101, 241));
 		bio.setSize(200,30);
 		bio.setLocation(130,210);
 		bio.setOpaque(true);
@@ -75,7 +170,7 @@ public class Ventana extends JFrame{
 		
 		JLabel preferencias=new JLabel("Preferencias",0);
 		preferencias.setFont(new Font("Arial",Font.BOLD,16));
-		preferencias.setBackground(new Color(227, 74, 26));
+		preferencias.setBackground(new Color(90, 101, 241));
 		preferencias.setSize(200,30);
 		preferencias.setLocation(130,320);
 		preferencias.setOpaque(true);
@@ -101,7 +196,7 @@ public class Ventana extends JFrame{
 		
 		JLabel terminos=new JLabel("Terminos y condiciones",0);
 		terminos.setFont(new Font("Arial",Font.BOLD,14));
-		terminos.setBackground(new Color(227, 74, 26));
+		terminos.setBackground(new Color(90, 101, 241));
 		terminos.setSize(200,30);
 		terminos.setLocation(130,380);
 		terminos.setOpaque(true);
@@ -126,22 +221,18 @@ public class Ventana extends JFrame{
 		String colonia[]={"Centro","Pedregal", "Camino Real","Tabachines"};
 		JComboBox locacion=new JComboBox(colonia);
 		
-		locacion.setBounds(130, 440, 200, 40);
+		locacion.setBounds(130, 440, 200, 30);
 		locacion.setFont(new Font("Arial",Font.BOLD,14));
 		locacion.setOpaque(false);
 		registro.add(locacion);
 		
 		this.add(registro);
-		
-
-		this.login();
-		
 	}
 	public void login()
 	{
 		JPanel login= new JPanel();
 		login.setSize(this.getWidth()/2,this.getHeight());
-		login.setBackground(Color.blue);
+		login.setBackground(new Color(134, 216, 201));
 		login.setLayout(null);
 		
 		JLabel loginTitulo=new JLabel("Acceder", 0);
@@ -149,7 +240,8 @@ public class Ventana extends JFrame{
 		loginTitulo.setSize(460, 40);
 		loginTitulo.setLocation(0, 20);
 		loginTitulo.setOpaque(true);
-		loginTitulo.setBackground(Color.cyan);
+		loginTitulo.setBackground(new Color(4, 0, 142));
+		loginTitulo.setForeground(new Color(255,255,255));
 		login.add(loginTitulo);
 		
 		JLabel usuario=new JLabel("Nombre de Usuario",0);
@@ -188,6 +280,8 @@ public class Ventana extends JFrame{
 		
 		JButton iniciar=new JButton("Iniciar Sesion");
 		iniciar.setBounds(160, 410, 140, 30);
+		iniciar.setBackground(new Color(149, 105, 197));
+		iniciar.setForeground(Color.WHITE);
 		login.add(iniciar);
 		
 		this.add(login);

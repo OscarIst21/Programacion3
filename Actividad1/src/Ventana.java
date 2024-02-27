@@ -40,7 +40,161 @@ public class Ventana extends JFrame{
 	public void iniciarComponentes() {
 		//this.login();
 		//this.registro();
-		this.admin();
+		//this.admin();
+		this.calculadora();
+	}
+	public void calculadora()
+	{
+		this.setTitle("Calculadora");
+		this.setSize(455,670);
+		JPanel calculadoraF= new JPanel();
+		calculadoraF.setSize(460,670);
+		calculadoraF.setLocation(0, 0);
+		calculadoraF.setBackground(Color.BLACK);
+		calculadoraF.setLayout(null);
+		this.add(calculadoraF);
+		
+		JLabel panelOP=new JLabel("0", 0);
+		panelOP.setFont(new Font("Impact",Font.BOLD,28));
+		panelOP.setSize(427, 120);
+		panelOP.setForeground(Color.white);
+		panelOP.setLocation(5, 5);
+		panelOP.setOpaque(true);
+		panelOP.setBackground(new Color(49, 49, 49));
+		calculadoraF.add(panelOP);
+		
+		JButton c=new JButton("C");
+		c.setBounds(5, 130, 103, 95);
+		c.setFont(new Font("Impact",Font.BOLD,22));
+		c.setBackground(new Color(136, 136, 136));
+		c.setForeground(Color.WHITE);
+		calculadoraF.add(c);
+		
+		JButton signo=new JButton("+/-");
+		signo.setBounds(113, 130, 103, 95);
+		signo.setFont(new Font("Impact",Font.BOLD,18));
+		signo.setBackground(new Color(136, 136, 136));
+		signo.setForeground(Color.WHITE);
+		calculadoraF.add(signo);
+		
+		JButton porcentaje=new JButton("%");
+		porcentaje.setBounds(221, 130, 103, 95);
+		porcentaje.setFont(new Font("Impact",Font.BOLD,24));
+		porcentaje.setBackground(new Color(136, 136, 136));
+		porcentaje.setForeground(Color.WHITE);
+		calculadoraF.add(porcentaje);
+		
+		JButton division=new JButton("/");
+		division.setBounds(329, 130, 103, 95);
+		division.setFont(new Font("Impact",Font.BOLD,28));
+		division.setBackground(new Color(207, 122, 0));
+		division.setForeground(Color.WHITE);
+		calculadoraF.add(division);
+		
+		JButton siete=new JButton("7");
+		siete.setBounds(5, 230, 103, 95);
+		siete.setFont(new Font("Impact",Font.BOLD,28));
+		siete.setBackground(new Color(41, 41, 41));
+		siete.setForeground(Color.WHITE);
+		calculadoraF.add(siete);
+		
+		JButton ocho=new JButton("8");
+		ocho.setBounds(113, 230, 103, 95);
+		ocho.setFont(new Font("Impact",Font.BOLD,28));
+		ocho.setBackground(new Color(41, 41, 41));
+		ocho.setForeground(Color.WHITE);
+		calculadoraF.add(ocho);
+		
+		JButton nueve=new JButton("9");
+		nueve.setBounds(221, 230, 103, 95);
+		nueve.setFont(new Font("Impact",Font.BOLD,28));
+		nueve.setBackground(new Color(41, 41, 41));
+		nueve.setForeground(Color.WHITE);
+		calculadoraF.add(nueve);
+		
+		JButton multiplicacion=new JButton("X");
+		multiplicacion.setBounds(329, 230, 103, 95);
+		multiplicacion.setFont(new Font("Impact",Font.BOLD,28));
+		multiplicacion.setBackground(new Color(207, 122, 0));
+		multiplicacion.setForeground(Color.WHITE);
+		calculadoraF.add(multiplicacion);
+		
+		JButton cuatro=new JButton("4");
+		cuatro.setBounds(5, 330, 103, 95);
+		cuatro.setFont(new Font("Impact",Font.BOLD,28));
+		cuatro.setBackground(new Color(41, 41, 41));
+		cuatro.setForeground(Color.WHITE);
+		calculadoraF.add(cuatro);
+		
+		JButton cinco=new JButton("5");
+		cinco.setBounds(113, 330, 103, 95);
+		cinco.setFont(new Font("Impact",Font.BOLD,28));
+		cinco.setBackground(new Color(41, 41, 41));
+		cinco.setForeground(Color.WHITE);
+		calculadoraF.add(cinco);
+		
+		JButton seis=new JButton("6");
+		seis.setBounds(221, 330, 103, 95);
+		seis.setFont(new Font("Impact",Font.BOLD,28));
+		seis.setBackground(new Color(41, 41, 41));
+		seis.setForeground(Color.WHITE);
+		calculadoraF.add(seis);
+		
+		JButton resta=new JButton("-");
+		resta.setBounds(329, 330, 103, 95);
+		resta.setFont(new Font("Impact",Font.BOLD,28));
+		resta.setBackground(new Color(207, 122, 0));
+		resta.setForeground(Color.WHITE);
+		calculadoraF.add(resta);
+		
+		JButton uno=new JButton("1");
+		uno.setBounds(5, 430, 103, 95);
+		uno.setFont(new Font("Impact",Font.BOLD,28));
+		uno.setBackground(new Color(41, 41, 41));
+		uno.setForeground(Color.WHITE);
+		calculadoraF.add(uno);
+		
+		JButton dos=new JButton("2");
+		dos.setBounds(113, 430, 103, 95);
+		dos.setFont(new Font("Impact",Font.BOLD,28));
+		dos.setBackground(new Color(41, 41, 41));
+		dos.setForeground(Color.WHITE);
+		calculadoraF.add(dos);
+		
+		JButton tres=new JButton("3");
+		tres.setBounds(221, 430, 103, 95);
+		tres.setFont(new Font("Impact",Font.BOLD,28));
+		tres.setBackground(new Color(41, 41, 41));
+		tres.setForeground(Color.WHITE);
+		calculadoraF.add(tres);
+		
+		JButton suma=new JButton("+");
+		suma.setBounds(329, 430, 103, 95);
+		suma.setFont(new Font("Impact",Font.BOLD,28));
+		suma.setBackground(new Color(207, 122, 0));
+		suma.setForeground(Color.WHITE);
+		calculadoraF.add(suma);
+		
+		JButton cero=new JButton("0");
+		cero.setBounds(5, 530, 210, 95);
+		cero.setFont(new Font("Impact",Font.BOLD,28));
+		cero.setBackground(new Color(41, 41, 41));
+		cero.setForeground(Color.WHITE);
+		calculadoraF.add(cero);
+		
+		JButton punto=new JButton(".");
+		punto.setBounds(221, 530, 103, 95);
+		punto.setFont(new Font("Impact",Font.BOLD,28));
+		punto.setBackground(new Color(41, 41, 41));
+		punto.setForeground(Color.WHITE);
+		calculadoraF.add(punto);
+		
+		JButton igual=new JButton("=");
+		igual.setBounds(329, 530, 103, 95);
+		igual.setFont(new Font("Impact",Font.BOLD,28));
+		igual.setBackground(new Color(207, 122, 0));
+		igual.setForeground(Color.WHITE);
+		calculadoraF.add(igual);
 	}
 	public void admin() {
 		//añadir panel

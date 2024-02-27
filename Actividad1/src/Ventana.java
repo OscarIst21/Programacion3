@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Ventana extends JFrame{
@@ -38,10 +39,10 @@ public class Ventana extends JFrame{
 	
 	
 	public void iniciarComponentes() {
-		//this.login();
+		this.login();
 		//this.registro();
 		//this.admin();
-		this.calculadora();
+		//this.calculadora();
 	}
 	public void calculadora()
 	{
@@ -63,7 +64,7 @@ public class Ventana extends JFrame{
 		panelOP.setBackground(new Color(49, 49, 49));
 		calculadoraF.add(panelOP);
 		
-		JButton c=new JButton("C");
+		JButton c=new JButton("AC");
 		c.setBounds(5, 130, 103, 95);
 		c.setFont(new Font("Impact",Font.BOLD,22));
 		c.setBackground(new Color(136, 136, 136));
@@ -384,43 +385,64 @@ public class Ventana extends JFrame{
 	}
 	public void login()
 	{
+		this.setSize(460, 560);
 		JPanel login= new JPanel();
-		login.setSize(this.getWidth()/2,this.getHeight());
-		login.setBackground(new Color(134, 216, 201));
+		login.setSize(this.getWidth(),this.getHeight());
+		login.setBackground(new Color(109, 115, 243));
 		login.setLayout(null);
 		
 		JLabel loginTitulo=new JLabel("Acceder", 0);
 		loginTitulo.setFont(new Font("Impact",Font.BOLD,26));
 		loginTitulo.setSize(460, 40);
 		loginTitulo.setLocation(0, 20);
-		loginTitulo.setOpaque(true);
-		loginTitulo.setBackground(new Color(4, 0, 142));
+		loginTitulo.setOpaque(false);
 		loginTitulo.setForeground(new Color(255,255,255));
 		login.add(loginTitulo);
+		
+		JLabel inicioSesion=new JLabel("Iniciar Sesión", 0);
+		inicioSesion.setFont(new Font("Impact",Font.BOLD,26));
+		inicioSesion.setSize(460, 40);
+		inicioSesion.setLocation(0, 100);
+		inicioSesion.setOpaque(false);
+		inicioSesion.setBackground(new Color(33, 98, 236));
+		inicioSesion.setForeground(new Color(227, 243, 74));
+		login.add(inicioSesion);
 		
 		JLabel usuario=new JLabel("Nombre de Usuario",0);
 		usuario.setFont(new Font("Arial",Font.BOLD,16));
 		usuario.setSize(150,120);
-		usuario.setLocation(130,100);
+		usuario.setForeground(Color.white);
+		usuario.setLocation(160,100);
 		usuario.setOpaque(false);
 		login.add(usuario);
 		
 		JTextField nombreUsuario=new JTextField();
-		nombreUsuario.setBounds(130, 180, 200, 30);
+		nombreUsuario.setBounds(160, 180, 200, 30);
 		login.add(nombreUsuario);
+		
+		JLabel logo=new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("iconoUser.png")));
+		logo.setBounds(128, 180, 30, 30);
+		login.add(logo);
 		
 		JLabel contraseña=new JLabel("Contraseña",0);
 		contraseña.setFont(new Font("Arial",Font.BOLD,16));
+		contraseña.setForeground(Color.white);
 		contraseña.setSize(120,120);
-		contraseña.setLocation(115,200);
+		contraseña.setLocation(148,200);
 		contraseña.setOpaque(false);
 		login.add(contraseña);
 		
 		JPasswordField contraUsuario=new JPasswordField();
-		contraUsuario.setBounds(130, 280, 200, 30);
+		contraUsuario.setBounds(160, 280, 200, 30);
 		login.add(contraUsuario);
 		
-		JCheckBox recordarme=new JCheckBox("Recordarme");
+		JLabel candado=new JLabel();
+		candado.setIcon(new ImageIcon(getClass().getResource("candado.png")));
+		candado.setBounds(128, 280, 30, 30);
+		login.add(candado);
+		
+		/*JCheckBox recordarme=new JCheckBox("Recordarme");
 		recordarme.setFont(new Font("Arial",Font.BOLD,10));
 		recordarme.setBounds(126, 300, 100, 50);
 		recordarme.setOpaque(false);
@@ -430,13 +452,32 @@ public class Ventana extends JFrame{
 		olvidoContraseña.setBounds(226, 310, 140, 30);
 		olvidoContraseña.setFont(new Font("Arial",Font.BOLD,10));
 		olvidoContraseña.setOpaque(false);
-		login.add(olvidoContraseña);
+		login.add(olvidoContraseña);*/
 		
 		JButton iniciar=new JButton("Iniciar Sesion");
-		iniciar.setBounds(160, 410, 140, 30);
-		iniciar.setBackground(new Color(149, 105, 197));
-		iniciar.setForeground(Color.WHITE);
+		iniciar.setBounds(160, 350, 140, 30);
+		iniciar.setBackground(new Color(249, 255, 123));
+		iniciar.setForeground(Color.black);
 		login.add(iniciar);
+		
+		JLabel notienesCuenta=new JLabel("¿No tienes cuenta?");
+		notienesCuenta.setBounds(180, 400, 180, 30);
+		notienesCuenta.setFont(new Font("Arial",Font.BOLD,10));
+		notienesCuenta.setOpaque(false);
+		login.add(notienesCuenta);
+		
+		JButton sinCuenta=new JButton("Registrarte");
+		sinCuenta.setBounds(140, 420, 180, 30);
+		sinCuenta.setBackground(new Color(249, 255, 123));
+		sinCuenta.setForeground(Color.black);
+		login.add(sinCuenta);
+		
+		JLabel fondoInicio=new JLabel("", 0);
+		fondoInicio.setSize(360, 300);
+		fondoInicio.setLocation(50, 100);
+		fondoInicio.setOpaque(true);
+		fondoInicio.setBackground(new Color(61, 64, 145));
+		login.add(fondoInicio);
 		
 		this.add(login);
 	}

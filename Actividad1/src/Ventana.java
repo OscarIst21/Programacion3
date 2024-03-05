@@ -3,7 +3,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -19,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -47,7 +53,54 @@ public class Ventana extends JFrame{
 		//this.registro();
 		//this.admin();
 		//this.calculadora();
-		this.calculadoraInteres();
+		//this.calculadoraInteres();
+		this.repaint();
+		this.revalidate();
+	}
+	public void paint(Graphics g)
+	{
+	 	this.setTitle("Paint");
+	    this.setSize(570, 520);
+	    JPanel panel = new JPanel();
+	    panel.setSize(460, 670);
+	    panel.setLocation(0, 0);
+	    panel.setBackground(new Color(192, 255, 248));
+	    panel.setLayout(new BorderLayout());
+	    
+	    super.paint(g);
+	    Graphics2D g2d=(Graphics2D) g;
+	    g2d.setColor(Color.red);
+	    //g2d.drawLine(50, 500, 300, 50);
+	    g2d.fillRect(100, 50, 200, 100);
+	    g2d.clearRect(150, 100, 100, 70);
+	    
+
+	    g2d.setColor(Color.yellow);
+	    g2d.fillArc(100, 200, 200, 200, 40, 320);
+	    
+	    g2d.setColor(Color.black);
+	    g2d.fillArc(175, 230, 20, 20, 0, 360);
+	    
+	    g2d.drawOval(320, 300, 100, 150); //dibuja un ovalo
+		g2d.fillOval(420, 300, 100, 150); // rellena obvalo
+		
+		int xPoints[] = {250,300,350}; // areglo de coordenadas x
+		int yPoints[] = {200,150,250}; // arreglo de coordernas y 
+		
+		g2d.drawPolygon(xPoints, yPoints, 3); // dibujar poligono
+		g2d.setColor(Color.black);
+		g2d.fillPolygon(xPoints, yPoints, 3);
+		
+		g2d.setFont(new Font("Cambria", Font.PLAIN, 50));
+		g2d.drawString("Hola", 380, 300); // Texto
+		
+		try {
+			BufferedImage image = ImageIO.read(new File("src/iconoUser.png"));
+			g2d.drawImage(image, 50, 400, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void calculadoraInteres() {
 	    this.setTitle("Calculadora de Interes");

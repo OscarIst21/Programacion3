@@ -59,48 +59,85 @@ public class Ventana extends JFrame{
 	}
 	public void paint(Graphics g)
 	{
+		this.setLocationRelativeTo(null);
 	 	this.setTitle("Paint");
-	    this.setSize(570, 520);
-	    JPanel panel = new JPanel();
-	    panel.setSize(460, 670);
-	    panel.setLocation(0, 0);
-	    panel.setBackground(new Color(192, 255, 248));
-	    panel.setLayout(new BorderLayout());
+	    this.setSize(1200, 700);
+	    JPanel panel= new JPanel();
+		panel.setSize(this.getWidth(),this.getHeight());
+		panel.setLocation(0, 0);
+		panel.setLayout(null);
 	    
 	    super.paint(g);
 	    Graphics2D g2d=(Graphics2D) g;
-	    g2d.setColor(Color.red);
-	    //g2d.drawLine(50, 500, 300, 50);
-	    g2d.fillRect(100, 50, 200, 100);
-	    g2d.clearRect(150, 100, 100, 70);
+	    g2d.setColor(Color.blue); 
+	    g2d.fillRect(0,0,1200,700);
+	    g2d.setColor(Color.white); 
+	    g2d.fillOval(0,20,200,100); 
+	    g2d.fillOval(0,40,250,100);
+	    g2d.fillOval(10,20,200,150);
 	    
-
-	    g2d.setColor(Color.yellow);
-	    g2d.fillArc(100, 200, 200, 200, 40, 320);
+	    g2d.fillOval(1000,20,200,100); 
+	    g2d.fillOval(990,40,250,100);
+	    g2d.fillOval(890,20,200,150);
+	    
+	    g2d.setColor(new Color(0, 161, 132));
+	    g2d.fillRect(300,200,600,400);
+	    
+	    g2d.setColor(new Color(0, 232, 190));
+	    g2d.fillRect(320,210,560,380);
+	    
+	    g2d.setColor(new Color(101, 124, 120));
+	    g2d.fillRect(280,170,640,30);
+	    
+	    g2d.setColor(Color.white);
+	    g2d.fillRect(350,120,10,50);
+	    g2d.fillRect(380,140,10,30);
 	    
 	    g2d.setColor(Color.black);
-	    g2d.fillArc(175, 230, 20, 20, 0, 360);
+	    g2d.fillRect(700,0,150,170);
+	    g2d.setColor(Color.DARK_GRAY);
+	    g2d.fillRect(710,0,130,170);
+	    g2d.setColor(Color.white);
+	    g2d.setFont(new Font("Cambria", Font.PLAIN, 20));
+		g2d.drawString("RotoPlas", 735, 100); // Texto
 	    
-	    g2d.drawOval(320, 300, 100, 150); //dibuja un ovalo
-		g2d.fillOval(420, 300, 100, 150); // rellena obvalo
-		
-		int xPoints[] = {250,300,350}; // areglo de coordenadas x
-		int yPoints[] = {200,150,250}; // arreglo de coordernas y 
-		
-		g2d.drawPolygon(xPoints, yPoints, 3); // dibujar poligono
-		g2d.setColor(Color.black);
-		g2d.fillPolygon(xPoints, yPoints, 3);
-		
-		g2d.setFont(new Font("Cambria", Font.PLAIN, 50));
-		g2d.drawString("Hola", 380, 300); // Texto
-		
-		try {
-			BufferedImage image = ImageIO.read(new File("src/iconoUser.png"));
-			g2d.drawImage(image, 50, 400, null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		g2d.setColor(new Color(200, 255, 245));
+	    g2d.fillRect(370,260,180,160);
+	    
+	    g2d.setColor(new Color(150, 201, 255));
+	    g2d.fillRect(380,270,75,140);
+	    g2d.fillRect(465,270,75,140);
+	    
+	    g2d.setColor(new Color(255, 187, 52));
+	    g2d.fillRect(900,400,100,200);
+	    
+	    g2d.setColor(new Color(255, 92, 52));
+	    g2d.fillRect(900,380,100,20);
+	    g2d.fillRect(920,360,60,20);
+	    g2d.setColor(Color.white);
+	    g2d.fillRect(900,350,50,10);
+	    
+	    g2d.setColor(new Color(194, 133, 0));
+	    for(int i=0; i<=100; i++) {
+	    i+=25;
+	    g2d.fillRect(0,480+i,1200,10);
+	    }
+	    g2d.setColor(new Color(232, 158, 0));
+	    for(int i=0; i<=1200; i++) {
+	    g2d.fillRoundRect(0+i,480,20,150,20,20);
+	    i+=35;
+	    }
+	    g2d.setColor(new Color(5, 149, 0));
+	    g2d.fillRect(0,600,1200,70);
+	    g2d.setColor(new Color(149, 57, 0));
+	    g2d.fillRect(0,670,1200,30);
+	    
+	    g2d.setColor(new Color(101, 124, 120));
+	    g2d.fillRect(670,300,155,300);
+	    g2d.setColor(Color.white);
+	    g2d.fillRect(680,310,135,290);
+	    g2d.setColor(new Color(255, 255, 0));
+	    g2d.fillRect(780,450,25,30);
 	}
 	public void calculadoraInteres() {
 	    this.setTitle("Calculadora de Interes");

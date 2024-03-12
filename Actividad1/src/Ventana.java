@@ -30,6 +30,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Ventana extends JFrame{
 	//Define los valores base de mi ventana.
@@ -43,23 +47,23 @@ public class Ventana extends JFrame{
 		
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(600,600));
-		//this.setLayout(null);
+		this.setLayout(null);
 		this.iniciarComponentes();
 		this.setVisible(true);
 	}
 	
 	
 	public void iniciarComponentes() {
-		//this.login();
-		//this.registro();
+		this.login();
+		this.registro();
 		//this.admin();
 		//this.calculadora();
 		//this.calculadoraInteres();
-		this.repaint();
-		this.revalidate();
+		//this.repaint();
+		//this.revalidate();
 	}
 	
-	public void paint(Graphics g)
+	/*public void paint(Graphics g)
 	{
 		this.setLocationRelativeTo(null);
 	 	this.setTitle("Paint");
@@ -362,6 +366,7 @@ public class Ventana extends JFrame{
 		    
 	    }
 	}
+	*/
 	public void calculadoraInteres() {
 	    this.setTitle("Calculadora de Interes");
 	    this.setSize(470, 420);
@@ -738,6 +743,7 @@ public class Ventana extends JFrame{
 		this.add(adminPanel);
 	}
 	public void registro() {
+
 		JPanel registro= new JPanel();
 		registro.setSize(this.getWidth()/2,this.getHeight());
 		registro.setLocation(460, 0);
@@ -757,12 +763,12 @@ public class Ventana extends JFrame{
 		usuarioR.setFont(new Font("Arial",Font.BOLD,16));
 		usuarioR.setBackground(new Color(90, 101, 241));
 		usuarioR.setSize(200,30);
-		usuarioR.setLocation(130,150);
+		usuarioR.setLocation(130,100);
 		usuarioR.setOpaque(true);
 		registro.add(usuarioR);
 		
 		JTextField nombreUsuarioR=new JTextField();
-		nombreUsuarioR.setBounds(130, 180, 200, 30);
+		nombreUsuarioR.setBounds(130, 130, 200, 30);
 		nombreUsuarioR.setHorizontalAlignment(0);
 		registro.add(nombreUsuarioR);
 		
@@ -770,36 +776,36 @@ public class Ventana extends JFrame{
 		bio.setFont(new Font("Arial",Font.BOLD,16));
 		bio.setBackground(new Color(90, 101, 241));
 		bio.setSize(200,30);
-		bio.setLocation(130,210);
+		bio.setLocation(130,160);
 		bio.setOpaque(true);
 		registro.add(bio);
 		
 		JTextArea bioUser=new JTextArea();
-		bioUser.setBounds(130, 240, 200, 80);
+		bioUser.setBounds(130, 190, 200, 80);
 		registro.add(bioUser);
 		
 		JLabel preferencias=new JLabel("Preferencias",0);
 		preferencias.setFont(new Font("Arial",Font.BOLD,16));
 		preferencias.setBackground(new Color(90, 101, 241));
 		preferencias.setSize(200,30);
-		preferencias.setLocation(130,320);
+		preferencias.setLocation(130,270);
 		preferencias.setOpaque(true);
 		registro.add(preferencias);
 		
 		JCheckBox item_box=new JCheckBox("Dulces");
-		item_box.setBounds(130, 350, 70, 30);
+		item_box.setBounds(130, 300, 70, 30);
 		item_box.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box.setOpaque(false);
 		registro.add(item_box);
 		
 		JCheckBox item_box1=new JCheckBox("Salado");
-		item_box1.setBounds(190, 350, 70, 30);
+		item_box1.setBounds(190, 300, 70, 30);
 		item_box1.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box1.setOpaque(false);
 		registro.add(item_box1);
 		
 		JCheckBox item_box2=new JCheckBox("Saludable");
-		item_box2.setBounds(250, 350, 90, 30);
+		item_box2.setBounds(250, 300, 90, 30);
 		item_box2.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box2.setOpaque(false);
 		registro.add(item_box2);
@@ -808,18 +814,18 @@ public class Ventana extends JFrame{
 		terminos.setFont(new Font("Arial",Font.BOLD,14));
 		terminos.setBackground(new Color(90, 101, 241));
 		terminos.setSize(200,30);
-		terminos.setLocation(130,380);
+		terminos.setLocation(130,330);
 		terminos.setOpaque(true);
 		registro.add(terminos);
 		
 		JRadioButton aceptTerminos=new JRadioButton("Aceptar");
-		aceptTerminos.setBounds(130,410,80, 30);
+		aceptTerminos.setBounds(130,360,80, 30);
 		aceptTerminos.setFont(new Font("Arial",Font.BOLD,14));
 		aceptTerminos.setOpaque(false);
 		registro.add(aceptTerminos);
 		
 		JRadioButton noAceptTerminos=new JRadioButton("No acepto");
-		noAceptTerminos.setBounds(230,410,110, 30);
+		noAceptTerminos.setBounds(230,360,110, 30);
 		noAceptTerminos.setFont(new Font("Arial",Font.BOLD,14));
 		noAceptTerminos.setOpaque(false);
 		registro.add(noAceptTerminos);
@@ -831,18 +837,51 @@ public class Ventana extends JFrame{
 		String colonia[]={"Centro","Pedregal", "Camino Real","Tabachines"};
 		JComboBox locacion=new JComboBox(colonia);
 		
-		locacion.setBounds(130, 440, 200, 30);
+		locacion.setBounds(130, 390, 200, 30);
 		locacion.setFont(new Font("Arial",Font.BOLD,14));
 		locacion.setOpaque(false);
 		registro.add(locacion);
 		
+		JButton registroAceptar=new JButton("Registrarse");
+		registroAceptar.setBounds(160, 450, 140, 30);
+		registroAceptar.setBackground(new Color(90, 101, 241));
+		registroAceptar.setForeground(Color.black);
+		registro.add(registroAceptar);
+		
+		registroAceptar.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String usr = nombreUsuarioR.getText();
+				String bio = bioUser.getText();
+				if (usr.length()<=0)
+				{
+					nombreUsuarioR.setBorder(BorderFactory.createLineBorder(Color.red,5));
+				} else {
+					nombreUsuarioR.setBorder(BorderFactory.createLineBorder(Color.green,5));
+				}
+				if(bio.length()<=0) {
+					bioUser.setBorder(BorderFactory.createLineBorder(Color.red,5));
+				} else
+				{
+					bioUser.setBorder(BorderFactory.createLineBorder(Color.green,5));
+				}
+				if(!aceptTerminos.isSelected()) {
+					aceptTerminos.setBorderPainted(true);
+					aceptTerminos.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}
+				else {
+					aceptTerminos.setBorderPainted(true);
+					aceptTerminos.setBorder(BorderFactory.createLineBorder(Color.green,3));
+				}
+			}});
 		this.add(registro);
 	}
 	public void login()
 	{
-		this.setSize(460, 560);
 		JPanel login= new JPanel();
-		login.setSize(this.getWidth(),this.getHeight());
+		login.setSize(this.getWidth()/2,this.getHeight());
 		login.setBackground(new Color(109, 115, 243));
 		login.setLayout(null);
 		
@@ -895,19 +934,7 @@ public class Ventana extends JFrame{
 		JLabel candado=new JLabel();
 		candado.setIcon(new ImageIcon(getClass().getResource("candado.png")));
 		candado.setBounds(128, 280, 30, 30);
-		login.add(candado);
-		
-		/*JCheckBox recordarme=new JCheckBox("Recordarme");
-		recordarme.setFont(new Font("Arial",Font.BOLD,10));
-		recordarme.setBounds(126, 300, 100, 50);
-		recordarme.setOpaque(false);
-		login.add(recordarme);
-		
-		JLabel olvidoContraseña=new JLabel("¿Olvido su contraseña?");
-		olvidoContraseña.setBounds(226, 310, 140, 30);
-		olvidoContraseña.setFont(new Font("Arial",Font.BOLD,10));
-		olvidoContraseña.setOpaque(false);
-		login.add(olvidoContraseña);*/
+		login.add(candado);		
 		
 		JButton iniciar=new JButton("Iniciar Sesion");
 		iniciar.setBounds(160, 350, 140, 30);
@@ -933,6 +960,51 @@ public class Ventana extends JFrame{
 		fondoInicio.setOpaque(true);
 		fondoInicio.setBackground(new Color(61, 64, 145));
 		login.add(fondoInicio);
+		
+		sinCuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+			
+		});
+		iniciar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String usr=nombreUsuario.getText();
+				String psw= new String(contraUsuario.getPassword());
+				if(usr.length()<=0)
+				{
+					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
+				}else {
+					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
+				}
+				if(psw.length()<=0) {
+					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
+				}else
+				{
+					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
+				}
+				if (usr.equals("SuperUser"))
+				{
+					//System.out.println(pwd);
+					if(psw.equals("SuperPass")) {
+						System.out.println("Bienvenido");
+					}
+				} else
+				{
+					System.out.println("Usuario no encontrado");
+					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
+					
+				}
+			//	System.out.println();
+				}
+			
+			
+		});
 		
 		this.add(login);
 	}

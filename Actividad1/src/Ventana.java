@@ -36,8 +36,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame implements MouseListener{
 	//Define los valores base de mi ventana.
+	JPanel adminPanel=new JPanel();
+	int x,y;
 	public Ventana() {
 		this.setTitle("no");
 		this.setSize(920, 560);
@@ -51,6 +53,7 @@ public class Ventana extends JFrame{
 		this.setLayout(null);
 		this.iniciarComponentes();
 		this.setVisible(true);
+		addMouseListener(this);
 	}
 	
 	
@@ -1010,7 +1013,7 @@ public class Ventana extends JFrame{
 	public void botones() 
 	{
 		this.setSize(500,700);
-		JPanel adminPanel=new JPanel();
+		
 		adminPanel.setSize(this.getWidth(),this.getHeight());
 		adminPanel.setLocation(0, 0);
 		adminPanel.setOpaque(true);
@@ -1062,5 +1065,75 @@ public class Ventana extends JFrame{
 			
 		});
 		this.add(adminPanel);
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		x=e.getX();
+		y=e.getY();
+		 saySomething("Mouse pressed; # of clicks: "
+                 + e.getClickCount(), e);
+	}
+
+
+	private void saySomething(String string, MouseEvent e) {
+
+		int w=(int)Math.floor(Math.random()*120+20);
+		int h=(int)Math.floor(Math.random()*120+20);
+
+		int r=(int)Math.floor(Math.random()*255+1);
+		int g=(int)Math.floor(Math.random()*255+1);
+		int b=(int)Math.floor(Math.random()*255+1);
+		
+		JButton otroBoton=new JButton(r+","+g+","+b);
+		otroBoton.setBounds(x-10, y-30, w, h);
+		otroBoton.setOpaque(true);
+		otroBoton.setBackground(new Color(r, g, b));
+		otroBoton.setForeground(Color.black);
+		adminPanel.add(otroBoton);
+		
+		getContentPane().repaint();
+		getContentPane().revalidate();
+		
+		otroBoton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
+				
+			}
+			
+		});
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

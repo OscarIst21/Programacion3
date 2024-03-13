@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -1046,6 +1047,17 @@ public class Ventana extends JFrame{
 				
 				getContentPane().repaint();
 				getContentPane().revalidate();
+				
+				otroBoton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
+						
+					}
+					
+				});
 			}
 			
 		});

@@ -54,13 +54,14 @@ public class Ventana extends JFrame{
 	
 	
 	public void iniciarComponentes() {
-		this.login();
-		this.registro();
+		//this.login();
+		//this.registro();
 		//this.admin();
 		//this.calculadora();
 		//this.calculadoraInteres();
 		//this.repaint();
 		//this.revalidate();
+		this.botones();
 	}
 	
 	/*public void paint(Graphics g)
@@ -591,9 +592,6 @@ public class Ventana extends JFrame{
 	    
 	    this.add(panel);
 	}
-
-
-
 	public void calculadora()
 	{
 		this.setTitle("Calculadora");
@@ -1008,5 +1006,49 @@ public class Ventana extends JFrame{
 		
 		this.add(login);
 	}
+	public void botones() 
+	{
+		this.setSize(500,700);
+		JPanel adminPanel=new JPanel();
+		adminPanel.setSize(this.getWidth(),this.getHeight());
+		adminPanel.setLocation(0, 0);
+		adminPanel.setOpaque(true);
+		adminPanel.setLayout(null);
+		adminPanel.setBackground(new Color(203, 255, 242));
+		
+		JButton super_boton=new JButton("Dale Click");
+		super_boton.setBounds(180, 600, 140, 50);
+		super_boton.setBackground(new Color(90, 101, 241));
+		super_boton.setForeground(Color.black);
+		adminPanel.add(super_boton);
+		
+		super_boton.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int x=(int)Math.floor(Math.random()*450+1);
+				int y=(int)Math.floor(Math.random()*650+1);
+
+				int w=(int)Math.floor(Math.random()*120+20);
+				int h=(int)Math.floor(Math.random()*120+20);
+
+				int r=(int)Math.floor(Math.random()*255+1);
+				int g=(int)Math.floor(Math.random()*255+1);
+				int b=(int)Math.floor(Math.random()*255+1);
+				
+				JButton otroBoton=new JButton(r+","+g+","+b);
+				otroBoton.setBounds(x, y, w, h);
+				otroBoton.setOpaque(true);
+				otroBoton.setBackground(new Color(r, g, b));
+				otroBoton.setForeground(Color.black);
+				adminPanel.add(otroBoton);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+			}
+			
+		});
+		this.add(adminPanel);
+	}
 }

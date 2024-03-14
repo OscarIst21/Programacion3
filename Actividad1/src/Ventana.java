@@ -1,6 +1,7 @@
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -42,7 +43,6 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	JPanel adminPanel=new JPanel();
 	int x,y;
 
-	JButton otroBoton=new JButton();
 	public Ventana() {
 		this.setTitle("no");
 		this.setSize(920, 560);
@@ -1052,6 +1052,7 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 				otroBoton.setOpaque(true);
 				otroBoton.setBackground(new Color(r, g, b));
 				otroBoton.setForeground(Color.black);
+				otroBoton.setFocusable(false);
 				adminPanel.add(otroBoton);
 				
 				getContentPane().repaint();
@@ -1105,10 +1106,13 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		int g=(int)Math.floor(Math.random()*255+1);
 		int b=(int)Math.floor(Math.random()*255+1);
 		
+
+		JButton otroBoton=new JButton(r+","+g+","+b);
 		otroBoton.setBounds(x-10, y-30, w, h);
 		otroBoton.setOpaque(true);
 		otroBoton.setBackground(new Color(r, g, b));
 		otroBoton.setForeground(Color.black);
+		otroBoton.setFocusable(false);
 		adminPanel.add(otroBoton);
 		
 		getContentPane().repaint();
@@ -1163,12 +1167,28 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println(e.getKeyCode()+" "+e.getKeyChar());
-		if(e.getKeyChar()=='8')
+		if(e.getKeyCode()==8)
 		{
 			adminPanel.removeAll();
 
 			getContentPane().repaint();
 			getContentPane().revalidate();
+		}
+		if(e.getKeyCode()==87)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setSize(btn.getHeight()+10,btn.getWidth()+10);
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}
+			}
+			
 		}
 	}
 

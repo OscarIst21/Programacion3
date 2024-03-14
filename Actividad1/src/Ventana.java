@@ -1013,7 +1013,8 @@ public class Ventana extends JFrame implements MouseListener{
 	public void botones() 
 	{
 		this.setSize(500,700);
-		
+		this.setLocationRelativeTo(null);
+	 	
 		adminPanel.setSize(this.getWidth(),this.getHeight());
 		adminPanel.setLocation(0, 0);
 		adminPanel.setOpaque(true);
@@ -1056,7 +1057,12 @@ public class Ventana extends JFrame implements MouseListener{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
+						JButton yo=((JButton) e.getSource());
+						//JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
+						adminPanel.remove(yo);
+						
+						getContentPane().repaint();
+						getContentPane().revalidate();
 						
 					}
 					

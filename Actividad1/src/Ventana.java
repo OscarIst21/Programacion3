@@ -1132,8 +1132,12 @@ public class Ventana extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		saySomething("Mouse entered", e);
+		int r=(int)Math.floor(Math.random()*255+1);
+		int g=(int)Math.floor(Math.random()*255+1);
+		int b=(int)Math.floor(Math.random()*255+1);
 		
+		adminPanel.setBackground(new Color(r,g,b));
 	}
 
 

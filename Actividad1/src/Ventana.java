@@ -10,7 +10,6 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -33,13 +32,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Ventana extends JFrame implements MouseListener{
+public class Ventana extends JFrame implements MouseListener, KeyListener{
 	//Define los valores base de mi ventana.
 	JPanel adminPanel=new JPanel();
 	int x,y;
+
+	JButton otroBoton=new JButton();
 	public Ventana() {
 		this.setTitle("no");
 		this.setSize(920, 560);
@@ -54,6 +57,7 @@ public class Ventana extends JFrame implements MouseListener{
 		this.iniciarComponentes();
 		this.setVisible(true);
 		addMouseListener(this);
+		addKeyListener(this);
 	}
 	
 	
@@ -1025,6 +1029,7 @@ public class Ventana extends JFrame implements MouseListener{
 		super_boton.setBounds(180, 600, 140, 50);
 		super_boton.setBackground(new Color(90, 101, 241));
 		super_boton.setForeground(Color.black);
+		super_boton.setFocusable(false);
 		adminPanel.add(super_boton);
 		
 		super_boton.addActionListener(new ActionListener() {
@@ -1100,7 +1105,6 @@ public class Ventana extends JFrame implements MouseListener{
 		int g=(int)Math.floor(Math.random()*255+1);
 		int b=(int)Math.floor(Math.random()*255+1);
 		
-		JButton otroBoton=new JButton(r+","+g+","+b);
 		otroBoton.setBounds(x-10, y-30, w, h);
 		otroBoton.setOpaque(true);
 		otroBoton.setBackground(new Color(r, g, b));
@@ -1143,6 +1147,34 @@ public class Ventana extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(e.getKeyCode()+" "+e.getKeyChar());
+		if(e.getKeyChar()=='8')
+		{
+			adminPanel.removeAll();
+
+			getContentPane().repaint();
+			getContentPane().revalidate();
+		}
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

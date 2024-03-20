@@ -1186,7 +1186,87 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 
 					getContentPane().repaint();
 					getContentPane().revalidate();
-				}
+				} 
+			}
+			
+		}
+		if(e.getKeyCode()==83)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setSize(btn.getHeight()-10,btn.getWidth()-10);
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				} 
+			}
+			
+		}
+		if(e.getKeyCode()==38)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setLocation(btn.getX(),btn.getY()-10);
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				} 
+			}
+			
+		}
+		if(e.getKeyCode()==40)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setLocation(btn.getX(),btn.getY()+10);
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				} 
+			}
+			
+		}
+		if(e.getKeyCode()==37)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setLocation(btn.getX()-10,btn.getY());
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				} 
+			}
+			
+		}
+		if(e.getKeyCode()==39)
+		{
+			Component[] elementos=adminPanel.getComponents();
+			for(int i=0; i<elementos.length; i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
+				{
+					JButton btn=((JButton) elementos[i]);
+					btn.setLocation(btn.getX()+10,btn.getY());
+
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				} 
 			}
 			
 		}

@@ -79,18 +79,17 @@ public class JuegoGato extends JFrame {
                     botonPresionado.setFont(new Font("Arial", Font.BOLD, 32));
                     if (botonPresionado.getText().equals("")) {
                         if (turno) {
-                            botonPresionado.setIcon(new ImageIcon(getClass().getResource("o.jpg")));
+                            //botonPresionado.setIcon(new ImageIcon(getClass().getResource("o.jpg")));
                             botonPresionado.setForeground(Color.black);
                             botonPresionado.setText("O");
                             botonPresionado.setFont(new Font("Arial", Font.BOLD, 28));
-                            botonPresionado.setOpaque(false);
                             ganador = "O";
                           
                             actualizarContador();
                             panel1.repaint();
                             panel1.revalidate();
                         } else {
-                            botonPresionado.setIcon(new ImageIcon(getClass().getResource("x.jpg")));
+                            //botonPresionado.setIcon(new ImageIcon(getClass().getResource("x.jpg")));
                             botonPresionado.setForeground(Color.RED);
                             botonPresionado.setText("X");
                             ganador = "X";
@@ -110,6 +109,7 @@ public class JuegoGato extends JFrame {
                             }
                             turno = false;
                             ganador = "";
+                            actualizarContador();
                             panel.repaint();
                             panel.revalidate();
 
@@ -156,7 +156,7 @@ public class JuegoGato extends JFrame {
         for (int i = 0; i < 3; i++) {
             if (!botones[i].getText().isEmpty() && botones[i].getText().equals(botones[i + 3].getText())
                     && botones[i].getText().equals(botones[i + 6].getText())) {
-            	x++;
+            	o++;
             	return true;
                 
             }

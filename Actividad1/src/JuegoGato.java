@@ -82,19 +82,18 @@ public class JuegoGato extends JFrame {
                             //botonPresionado.setIcon(new ImageIcon(getClass().getResource("o.jpg")));
                             botonPresionado.setForeground(Color.black);
                             botonPresionado.setText("O");
-                            botonPresionado.setFont(new Font("Arial", Font.BOLD, 28));
+                            botonPresionado.setFont(new Font("Arial", Font.BOLD, 2));
+                            botonPresionado.setIcon(new ImageIcon(getClass().getResource("o.png")));
                             ganador = "O";
-                          
                             actualizarContador();
                             panel1.repaint();
                             panel1.revalidate();
                         } else {
-                            //botonPresionado.setIcon(new ImageIcon(getClass().getResource("x.jpg")));
                             botonPresionado.setForeground(Color.RED);
-                            botonPresionado.setText("X");
+                            botonPresionado.setText("x");
+                            botonPresionado.setFont(new Font("Arial", Font.BOLD, 2));
+                            botonPresionado.setIcon(new ImageIcon(getClass().getResource("x.png")));
                             ganador = "X";
-                        
-                            actualizarContador();
                             panel1.repaint();
                             panel1.revalidate();
                         }
@@ -182,6 +181,6 @@ public class JuegoGato extends JFrame {
     public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	 
-	 //JuegoGato JuegoGato=new JuegoGato();
+	 JuegoGato JuegoGato=new JuegoGato();
 	}
 }

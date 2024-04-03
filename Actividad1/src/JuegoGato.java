@@ -101,8 +101,13 @@ public class JuegoGato extends JFrame {
                         turno = !turno;
                         if (verificarGanador() != false) {
                             JOptionPane.showMessageDialog(null, "El ganador es " + ganador, "Ganador ",
-                                    JOptionPane.WARNING_MESSAGE);
-                           
+                            JOptionPane.WARNING_MESSAGE);
+                           if(turno==false) {
+                        	   o++;
+                           }else 
+                           {
+                        	   x++;
+                           }
                             for (JButton boton : botones) {
                                 boton.setText("");
                                 boton.setIcon(null);
@@ -149,29 +154,34 @@ public class JuegoGato extends JFrame {
         for (int i = 0; i < 3; i++) {
             if (!botones[i * 3].getText().isEmpty() && botones[i * 3].getText().equals(botones[i * 3 + 1].getText())
                     && botones[i * 3].getText().equals(botones[i * 3 + 2].getText())) {
-            	x++;
+            	
                 return true;
             }
         }
         for (int i = 0; i < 3; i++) {
             if (!botones[i].getText().isEmpty() && botones[i].getText().equals(botones[i + 3].getText())
                     && botones[i].getText().equals(botones[i + 6].getText())) {
-            	o++;
+            	
             	return true;
                 
             }
         }
         if (!botones[0].getText().isEmpty() && botones[0].getText().equals(botones[4].getText())
                 && botones[0].getText().equals(botones[8].getText())) {
-        	o++;
+        	
             return true;
         }
         if (!botones[2].getText().isEmpty() && botones[2].getText().equals(botones[4].getText())
                 && botones[2].getText().equals(botones[6].getText())) {
-        	o++;
+        	
             return true;
         }
 
         return false;
     }
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	 
+	 //JuegoGato JuegoGato=new JuegoGato();
+	}
 }

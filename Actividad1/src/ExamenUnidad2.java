@@ -287,6 +287,6 @@ public class ExamenUnidad2 extends JFrame {
 
 public static void main(String[] args) {
 	// TODO Auto-generated method stub
-	ExamenUnidad2 ventana=new ExamenUnidad2();
+	//ExamenUnidad2 ventana=new ExamenUnidad2();
 }
 }

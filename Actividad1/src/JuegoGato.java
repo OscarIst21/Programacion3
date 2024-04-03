@@ -181,6 +181,6 @@ public class JuegoGato extends JFrame {
     public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	 
-	 JuegoGato JuegoGato=new JuegoGato();
+	// JuegoGato JuegoGato=new JuegoGato();
 	}
 }

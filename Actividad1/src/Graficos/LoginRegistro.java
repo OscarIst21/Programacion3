@@ -19,6 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginRegistro extends JFrame {
+	
 public LoginRegistro(){
 	this.setTitle("no");
 	this.setSize(520, 720);
@@ -27,7 +28,7 @@ public LoginRegistro(){
 	
 	this.setMinimumSize(new Dimension(250,250));
 	this.setMaximumSize(new Dimension(600,600));
-	this.setLayout(null);
+	
 	this.iniciarComponentes();
 	
 	this.setVisible(true);
@@ -35,34 +36,35 @@ public LoginRegistro(){
 
 
 public void iniciarComponentes() {
-	//this.login();
-	this.registro();
+	this.login();
+	//this.registro();
 }
 
 public void registro() {
-	
+		menu();
 		this.setTitle("Registro");
 		JPanel registro= new JPanel();
 
 		this.setLocationRelativeTo(null);
 		registro.setSize(this.getWidth(),this.getHeight());
 		registro.setLocation(0, 0);
-		registro.setBackground(new Color(42, 0, 41));
+		registro.setBackground(new Color(13, 114, 203));
+		registro.setBorder(BorderFactory.createLineBorder(new Color(0, 9, 198),10));
 		registro.setLayout(null);
-		
+
 		JLabel marco = new JLabel();
 		marco.setSize(420, 520);
 		marco.setLocation(45, 70);
 		marco.setOpaque(false);
-		marco.setBackground(new Color(42, 0, 41)); 
+		marco.setBackground(new Color(13, 114, 203)); 
 		marco.setBorder(BorderFactory.createLineBorder(Color.black));
 		registro.add(marco);
 		
 		JLabel registroT=new JLabel("Registro", 0);
 		registroT.setFont(new Font("Impact",Font.BOLD,26));
-		registroT.setSize(505, 190);
+		registroT.setSize(420, 190);
 		registroT.setForeground(Color.white);
-		registroT.setLocation(0, 20);
+		registroT.setLocation(45, 20);
 		registroT.setOpaque(false);
 		registro.add(registroT);
 		
@@ -126,9 +128,9 @@ public void registro() {
 		registro.add(item_box);
 		
 		JButton registroAceptar=new JButton("Registrarse");
-		registroAceptar.setBounds(190, 450, 140, 30);
-		registroAceptar.setBackground(new Color(197, 40, 40 ));
-		registroAceptar.setForeground(Color.white);
+		registroAceptar.setBounds(80, 450, 350, 40);
+		registroAceptar.setBackground(new Color(137, 202, 206 ));
+		registroAceptar.setForeground(Color.black);
 		registroAceptar.setFocusable(false);
 		registro.add(registroAceptar);
 		
@@ -172,42 +174,119 @@ public void registro() {
 			        }else {
 			            contraUsuario.setBorder(BorderFactory.createLineBorder(Color.green));
 			            contraUsuarioC.setBorder(BorderFactory.createLineBorder(Color.green));
+			            
 			        }
 			        
 			    }
 			});
+		JButton yaTienesCuenta=new JButton("<html><u>¿Ya tienes cuenta?</u><html>");
+		yaTienesCuenta.setBounds(80, 490, 350, 40);
+		yaTienesCuenta.setOpaque(false);
+		yaTienesCuenta.setBorder(null);
+		yaTienesCuenta.setBackground(new Color(137, 202, 206 ));
+		yaTienesCuenta.setForeground(Color.black);
+		yaTienesCuenta.setFocusable(false);
+		registro.add(yaTienesCuenta);
+		yaTienesCuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				getContentPane().removeAll();
+		        getContentPane().repaint();
+		        getContentPane().revalidate();
+		        login();
+			}
+			
+		});
 		this.add(registro);
 }
+public void menu() {
+	JMenuBar barra = new JMenuBar();
+    JMenu menuCuenta = new JMenu("Cuenta");
+    JMenuItem loginItem = new JMenuItem("Login");
+    loginItem.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			getContentPane().removeAll();
+	        getContentPane().repaint();
+	        getContentPane().revalidate();
+	        login();
+		}
+    	
+    });
+    JMenuItem registroItem = new JMenuItem("Registro");
+    registroItem.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			getContentPane().removeAll();
+	        getContentPane().repaint();
+	        getContentPane().revalidate();
+	        registro();
+		}
+    	
+    });
+    JMenuItem recuperacionItem = new JMenuItem("Recuperacion de cuenta");
+    recuperacionItem.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			getContentPane().removeAll();
+	        getContentPane().repaint();
+	        getContentPane().revalidate();
+	        recuperarCuenta();
+		}
+    	
+    });
+    menuCuenta.add(loginItem);
+    menuCuenta.add(registroItem);
+    menuCuenta.add(recuperacionItem);
+    JMenu menuUsuario = new JMenu("Usuario");
+    JMenuItem altaItem = new JMenuItem("Alta");
+    JMenuItem bajaItem = new JMenuItem("Baja");
+    JMenuItem consultarItem = new JMenuItem("Consultar");
+    menuUsuario.add(altaItem);
+    menuUsuario.add(bajaItem);
+    menuUsuario.add(consultarItem);
+    JMenu menuAyuda = new JMenu("Usuario");
+    JMenuItem crearUItem = new JMenuItem("¿Como crear un usuario?");
+    JMenuItem accederItem = new JMenuItem("¿Cómo acceder al sistema?");
+    JMenuItem QpasaItem = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
+    menuAyuda.add(crearUItem);
+    menuAyuda.add(accederItem);
+    menuAyuda.add(QpasaItem);
+    
+    barra.add(menuCuenta);
+    barra.add(menuUsuario);
+    barra.add(menuAyuda);
+    setJMenuBar(barra);
+    
+}
 public void login() {
-		JMenuBar barra = new JMenuBar();
-	    JMenu menuUsuarios = new JMenu("Usuarios");
-	    JMenuItem loginItem = new JMenuItem("Login");
-	    JMenuItem registrarItem = new JMenuItem("Registrar");
-	
-	    menuUsuarios.add(loginItem);
-	    menuUsuarios.add(registrarItem);
-	    barra.add(menuUsuarios);
-	    setJMenuBar(barra);
+		menu();
 	    this.setTitle("Login");
 	    JPanel login = new JPanel();
 	    login.setSize(this.getWidth(), this.getHeight());
 	    login.setLocation(0, 0);
-	    login.setBackground(new Color(42, 0, 41));
+	    login.setBorder(BorderFactory.createLineBorder(new Color(0, 9, 198),10));
+	    login.setBackground(new Color(13, 114, 203));
 	    login.setLayout(null);
 	
 	    JLabel marco = new JLabel();
 	    marco.setSize(385, 390);
 	    marco.setLocation(55, 120);
 	    marco.setOpaque(false);
-	    marco.setBackground(new Color(42, 0, 41));
+	    marco.setBackground(new Color(13, 114, 203));
 	    marco.setBorder(BorderFactory.createLineBorder(Color.black));
 	    login.add(marco);
 	
-	    JLabel loginT = new JLabel("Login", 0);
-	    loginT.setFont(new Font("Impact", Font.BOLD, 26));
-	    loginT.setSize(505, 190);
+	    JLabel loginT = new JLabel("Bienvenido", 0);
+	    loginT.setFont(new Font("Impact", Font.PLAIN, 26));
+	    loginT.setSize(385, 190);
 	    loginT.setForeground(Color.white);
-	    loginT.setLocation(0, 70);
+	    loginT.setLocation(55, 70);
 	    loginT.setOpaque(false);
 	    login.add(loginT);
 	
@@ -238,9 +317,9 @@ public void login() {
 	    login.add(contraseñaField);
 	
 	    JButton loginButton = new JButton("Iniciar Sesión");
-	    loginButton.setBounds(180, 370, 140, 30);
-	    loginButton.setBackground(new Color(197, 40, 40));
-	    loginButton.setForeground(Color.white);
+	    loginButton.setBounds(100, 370, 300, 40);
+	    loginButton.setBackground(new Color(137, 202, 206));
+	    loginButton.setForeground(Color.black);
 	    loginButton.setFocusable(false);
 	    login.add(loginButton);
 	
@@ -252,9 +331,55 @@ public void login() {
 	            
 	        }
 	    });
-	   
-		
+	    JButton yaTienesCuenta=new JButton("<html><u>¿Nuevo usuario?</u><html>");
+		yaTienesCuenta.setBounds(100, 410, 300, 40);
+		yaTienesCuenta.setOpaque(false);
+		yaTienesCuenta.setBorder(null);
+		yaTienesCuenta.setBackground(new Color(137, 202, 206 ));
+		yaTienesCuenta.setForeground(Color.black);
+		yaTienesCuenta.setFocusable(false);
+		login.add(yaTienesCuenta);
+		yaTienesCuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				getContentPane().removeAll();
+		        getContentPane().repaint();
+		        getContentPane().revalidate();
+		        registro();
+			}
+			
+		});
 	    this.add(login);
+}
+public void recuperarCuenta() {
+	menu();
+    this.setTitle("Recuperar Cuenta");
+    JPanel recuperarCuenta = new JPanel();
+    recuperarCuenta.setSize(this.getWidth(), this.getHeight());
+    recuperarCuenta.setLocation(0, 0);
+    recuperarCuenta.setBorder(BorderFactory.createLineBorder(new Color(191, 0, 0),10));
+    recuperarCuenta.setBackground(new Color(247, 72, 72));
+    recuperarCuenta.setLayout(null);
+
+    JLabel marco = new JLabel();
+    marco.setSize(385, 390);
+    marco.setLocation(55, 120);
+    marco.setOpaque(false);
+    marco.setBackground(new Color(13, 114, 203));
+    marco.setBorder(BorderFactory.createLineBorder(Color.black));
+    recuperarCuenta.add(marco);
+
+    JLabel recuperarCuentaT = new JLabel("Recuperar Cuenta", 0);
+    recuperarCuentaT.setFont(new Font("Impact", Font.PLAIN, 26));
+    recuperarCuentaT.setSize(385, 190);
+    recuperarCuentaT.setForeground(Color.white);
+    recuperarCuentaT.setLocation(55, 70);
+    recuperarCuentaT.setOpaque(false);
+    recuperarCuenta.add(recuperarCuentaT);
+
+    this.add(recuperarCuenta);
 }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

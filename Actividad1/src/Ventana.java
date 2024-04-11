@@ -1,7 +1,6 @@
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -11,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -31,18 +30,9 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class Ventana extends JFrame implements MouseListener, KeyListener{
+public class Ventana extends JFrame{
 	//Define los valores base de mi ventana.
-	JPanel adminPanel=new JPanel();
-	int x,y;
-
 	public Ventana() {
 		this.setTitle("no");
 		this.setSize(920, 560);
@@ -53,31 +43,29 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(600,600));
-		this.setLayout(null);
+		//this.setLayout(null);
 		this.iniciarComponentes();
 		this.setVisible(true);
-		addMouseListener(this);
-		addKeyListener(this);
 	}
 	
 	
 	public void iniciarComponentes() {
 		//this.login();
-		this.registro();
+		//this.registro();
 		//this.admin();
 		//this.calculadora();
 		//this.calculadoraInteres();
-		//this.repaint();
-		//this.revalidate();
-		//this.botones();
+		this.repaint();
+		this.revalidate();
 	}
 	
-	/*public void paint(Graphics g)
+	public void paint(Graphics g)
 	{
 		this.setLocationRelativeTo(null);
 	 	this.setTitle("Paint");
 	    this.setSize(1300, 700);
 	    JPanel panel= new JPanel();
+		panel.setSize(this.getWidth(),this.getHeight());
 		panel.setLocation(0, 0);
 		panel.setLayout(null);
 	    
@@ -85,17 +73,13 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		Color azulClaro=new Color(198,227,231);
 		Color azulClaroSombra=new Color(149,193,199);
 		Color azul=new Color(118,178,215);
-		Color azulMedio=new Color(105, 152, 182);
 		Color azulSombra=new Color(18,81,117);
-		Color tubo=new Color(133,130,203);
-		Color tuboMedio=new Color(108,103,176);
-		Color tuboOscuro=new Color(79,74,132);
+		Color tubo=new Color(110,107,183);
 		Color sombraNube=new Color(178,211,214);
 		Color pasto=new Color(24,178,42);
 		Color verdeArbol=new Color(6,251,9);
 		Color pastoSombra=new Color(32, 124, 0);
 		Color tierra=new Color(207,158,95);
-		Color tierraSombra=new Color(140, 101, 40);
 		Color tierraMancha=new Color(235,189,98);
 		Color gris=new Color(195,191,199);
 		Color grisSombra=new Color(120,117,123);
@@ -107,18 +91,13 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    g2d.setColor(azulFondo); 
 	    g2d.fillRect(0,0,1300,700);
 	    
-	    g2d.setColor(sombraNube);
-	    g2d.fillRoundRect(750, 100, 250, 60, 70, 40);
-	    g2d.setColor(Color.white);
-	    g2d.fillRoundRect(750, 100, 240, 50, 70, 40);
-	    
 	    g2d.setColor(azulClaroSombra);
 	    g2d.fillRect(100, 250, 170, 400);
 	    g2d.fillArc(100, 150, 170, 200,0,180);
 	    g2d.setColor(azulClaro);
 	    g2d.fillRect(100, 250, 150, 400);
 	    g2d.fillArc(100, 150, 150, 200,0,180);
-	    
+
 	    g2d.setColor(azulClaroSombra);
 	    g2d.fillRect(500, 250, 170, 400);
 	    g2d.fillArc(500, 150, 170, 200,0,180);
@@ -133,102 +112,48 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    g2d.fillRect(670, 200, 150, 400);
 	    g2d.fillArc(670, 100, 150, 200,0,180);
 	    
-	    g2d.setColor(Color.white);
-	    g2d.fillOval(190, 200, 30, 40);
-	    g2d.fillOval(190, 340, 30, 40);
-	    g2d.fillOval(130, 400, 30, 40);
-	    g2d.fillOval(600, 200, 30, 40);
-	    g2d.fillOval(530, 240, 30, 40);
-	    g2d.fillOval(530, 400, 30, 40);
-	    g2d.fillOval(760, 130, 30, 40);
-	    g2d.fillOval(700, 240, 30, 40);
-	    
-	    g2d.setColor(sombraNube);
+	    g2d.setColor(azulClaroSombra);
 	    g2d.fillRoundRect(0, 250, 200, 60, 70, 40);
 	    g2d.setColor(Color.white);
 	    g2d.fillRoundRect(0, 250, 190, 50, 70, 40);
 
-	    g2d.setColor(sombraNube);
+	    g2d.setColor(azulClaroSombra);
 	    g2d.fillRoundRect(400, 300, 250, 60, 70, 40);
 	    g2d.setColor(Color.white);
 	    g2d.fillRoundRect(400, 300, 240, 50, 70, 40);
 	    
-	    g2d.setColor(sombraNube);
-	    g2d.fillRoundRect(600, 360, 200, 60, 70, 40);
+	    g2d.setColor(azulClaroSombra);
+	    g2d.fillRoundRect(600, 370, 200, 60, 70, 40);
 	    g2d.setColor(Color.white);
-	    g2d.fillRoundRect(600, 360, 190, 50, 70, 40);
-	    
-	    g2d.setColor(sombraNube);
-	    g2d.fillRoundRect(950, 260, 150, 60, 70, 40);
-	    g2d.setColor(Color.white);
-	    g2d.fillRoundRect(950, 260, 140, 50, 70, 40);
-	    
-	    g2d.setColor(sombraNube);
-	    g2d.fillRoundRect(1150, 160, 150, 60, 70, 40);
-	    g2d.setColor(Color.white);
-	    g2d.fillRoundRect(1150, 160, 140, 50, 70, 40);
-
+	    g2d.fillRoundRect(600, 370, 190, 50, 70, 40);
 
 	    g2d.setColor(azulSombra);
 	    g2d.fillRect(0, 550, 170, 400);
 	    g2d.fillArc(0, 450, 170, 200,0,180);
-	    g2d.setColor(azulMedio);
-	    g2d.fillRect(0, 550, 160, 400);
-	    g2d.fillArc(0, 450, 160, 200,0,180);
 	    g2d.setColor(azul);
-	    g2d.fillRect(0, 550, 140, 400);
-	    g2d.fillArc(0, 450, 140, 200,0,180);
+	    g2d.fillRect(0, 550, 150, 400);
+	    g2d.fillArc(0, 450, 150, 200,0,180);
 	    
 	    g2d.setColor(azulSombra);
 	    g2d.fillRect(500, 550, 250, 400);
 	    g2d.fillArc(500, 450, 250, 200,0,180);
-	    g2d.setColor(azulMedio);
-	    g2d.fillRect(500, 550, 240, 400);
-	    g2d.fillArc(500, 450, 240, 200,0,180);
 	    g2d.setColor(azul);
-	    g2d.fillRect(500, 550, 220, 400);
-	    g2d.fillArc(500, 450, 220, 200,0,180);
+	    g2d.fillRect(500, 550, 230, 400);
+	    g2d.fillArc(500, 450, 230, 200,0,180);
 	    
 	    g2d.setColor(azulSombra);
 	    g2d.fillRect(750, 300, 250, 400);
 	    g2d.fillArc(750, 200, 250, 200,0,180);
-	    g2d.setColor(azulMedio);
-	    g2d.fillRect(750, 300, 240, 400);
-	    g2d.fillArc(750, 200, 240, 200,0,180);
 	    g2d.setColor(azul);
-	    g2d.fillRect(750, 300, 220, 400);
-	    g2d.fillArc(750, 200, 220, 200,0,180);
-	    
-	    g2d.setColor(Color.black);
-	    g2d.fillRect(570,440,100,40);
-	    g2d.fillRect(575,480,90,100);
-	    g2d.setColor(tuboOscuro);
-	    g2d.fillRect(574,444,92,34);
-	    g2d.fillRect(579,484,82,94);
-	    g2d.setColor(tuboMedio);
-	    g2d.fillRect(584,444,72,34);
-	    g2d.fillRect(599,484,52,94);
-	    g2d.setColor(tubo);
-	    g2d.fillRect(594,444,32,34);
-	    g2d.fillRect(609,484,22,94);
-	    g2d.setColor(Color.white);
-	    g2d.fillRect(600,444,10,34);
-	    g2d.fillRect(609,484,10,94);
+	    g2d.fillRect(750, 300, 230, 400);
+	    g2d.fillArc(750, 200, 230, 200,0,180);
 	    
 	    g2d.setColor(azulSombra);
 	    g2d.fillRect(1050, 400, 250, 400);
 	    g2d.fillArc(1050, 300, 250, 200,0,180);
-	    g2d.setColor(azulMedio);
-	    g2d.fillRect(1050, 400, 240, 400);
-	    g2d.fillArc(1050, 300, 240, 200,0,180);
 	    g2d.setColor(azul);
-	    g2d.fillRect(1050, 400, 220, 400);
-	    g2d.fillArc(1050, 300, 220, 200,0,180);
-	    g2d.setColor(azulClaro);
-	    g2d.fillOval(870, 270, 40, 50);
-	    g2d.fillOval(800, 420, 30, 40);
-	    g2d.fillOval(1090, 360, 40, 50);
-	    g2d.fillOval(1200, 490, 30, 40);
+	    g2d.fillRect(1050, 400, 230, 400);
+	    g2d.fillArc(1050, 300, 230, 200,0,180);;
 	    
 	    g2d.setColor(Color.black);
 	    g2d.fillRoundRect(950, 530, 60, 40, 5, 5);
@@ -258,44 +183,6 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    g2d.setColor(gris);
 	    g2d.fillRoundRect(952, 412, 48, 28, 5, 5);
 
-
-	    g2d.setColor(Color.black);
-	    g2d.fillRoundRect(1130, 530, 60, 40, 5, 5);
-	    g2d.setColor(grisSombra);
-	    g2d.fillRoundRect(1132, 532, 56, 36, 5, 5);
-	    g2d.setColor(gris);
-	    g2d.fillRoundRect(1132, 532, 48, 28, 5, 5);
-	    
-	    g2d.setColor(Color.black);
-	    g2d.fillRoundRect(1130, 490, 60, 40, 5, 5);
-	    g2d.setColor(grisSombra);
-	    g2d.fillRoundRect(1132, 492, 56, 36, 5, 5);
-	    g2d.setColor(gris);
-	    g2d.fillRoundRect(1132, 492, 48, 28, 5, 5);
-	    
-	    g2d.setColor(Color.black);
-	    g2d.fillRoundRect(1130, 450, 60, 40, 5, 5);
-	    g2d.setColor(grisSombra);
-	    g2d.fillRoundRect(1132, 452, 56, 36, 5, 5);
-	    g2d.setColor(gris);
-	    g2d.fillRoundRect(1132, 452, 48, 28, 5, 5);
-
-	    g2d.setColor(Color.black);
-	    g2d.fillRoundRect(1130, 410, 60, 40, 5, 5);
-	    g2d.setColor(grisSombra);
-	    g2d.fillRoundRect(1132, 412, 56, 36, 5, 5);
-	    g2d.setColor(gris);
-	    g2d.fillRoundRect(1132, 412, 48, 28, 5, 5);
-	    g2d.setColor(Color.white);
-	    g2d.fillArc(1136, 412, 12, 15, 0, 360);
-	    g2d.fillArc(1134, 454, 12, 15, 0, 360);
-	    g2d.fillArc(1134, 494, 12, 15, 0, 360);
-	    g2d.fillArc(1134, 534, 12, 15, 0, 360);
-	    g2d.fillArc(954, 414, 12, 15, 0, 360);
-	    g2d.fillArc(954, 454, 12, 15, 0, 360);
-	    g2d.fillArc(954, 494, 12, 15, 0, 360);
-	    g2d.fillArc(954, 534, 12, 15, 0, 360);
-	    
 	    g2d.setColor(Color.black);
 	    g2d.fillRoundRect(1010, 410, 60, 40, 5, 5);
 	    g2d.setColor(amarilloSombra);
@@ -307,22 +194,6 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    g2d.fillOval(1045, 420, 7, 15);
 	    
 	    g2d.setColor(Color.black);
-	    g2d.fillRect(1020,480,100,40);
-	    g2d.fillRect(1025,520,90,100);
-	    g2d.setColor(tuboOscuro);
-	    g2d.fillRect(1024,484,92,34);
-	    g2d.fillRect(1029,524,82,94);
-	    g2d.setColor(tuboMedio);
-	    g2d.fillRect(1034,484,72,34);
-	    g2d.fillRect(1049,524,52,94);
-	    g2d.setColor(tubo);
-	    g2d.fillRect(1044,484,32,34);
-	    g2d.fillRect(1059,524,22,94);
-	    g2d.setColor(Color.white);
-	    g2d.fillRect(1050,484,10,34);
-	    g2d.fillRect(1059,524,10,94);
-	    
-	    g2d.setColor(Color.black);
 	    g2d.fillRoundRect(1070, 410, 60, 40, 5, 5);
 	    g2d.setColor(amarilloSombra);
 	    g2d.fillRoundRect(1070, 412, 56, 36, 5, 5);
@@ -331,36 +202,24 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    g2d.setColor(Color.black);
 	    g2d.fillOval(1085, 420, 7, 15);
 	    g2d.fillOval(1105, 420, 7, 15);
+
 	    g2d.fillArc(230, 530, 50, 70, 0, 360);
 	    g2d.fillArc(270, 510, 50, 70, 0, 360);
 	    g2d.fillArc(300, 500, 100, 80, 0, 360);
 	    g2d.fillArc(330, 530, 110, 80, 0, 360);
 	    
-	    g2d.setColor(pastoSombra);
+	    g2d.setColor(verdeArbol);
 	    g2d.fillArc(232, 533, 50, 70, 0, 360);
 	    g2d.fillArc(272, 513, 50, 70, 0, 360);
 	    g2d.fillArc(302, 503, 95, 80, 0, 360);
 	    g2d.fillArc(332, 533, 106, 78, 0, 360);
-	    g2d.setColor(verdeArbol);
-	    g2d.fillArc(235, 538, 47, 70, 0, 360);
-	    g2d.fillArc(275, 518, 47, 70, 0, 360);
-	    g2d.fillArc(305, 508, 93, 80, 0, 360);
-	    g2d.fillArc(335, 538, 103, 76, 0, 360);
-	    g2d.setColor(tierraMancha);
-	    g2d.fillArc(295, 528, 12, 15, 0, 360);
-	    g2d.fillArc(385, 548, 15, 18, 0, 360);
+
 	    g2d.setColor(pasto);
 	    g2d.fillRect(0, 570, 1300, 30);
-	    g2d.setColor(pastoSombra);
-	    g2d.fillRect(0, 570, 1300, 8);
-	    g2d.setColor(Color.black);
-	    g2d.fillRect(0, 568, 1300, 5);
 	    g2d.setColor(tierra);
 	    g2d.fillRect(0, 600, 1300, 100);
 	    for(int i=0;i<=1300; i+=36)
 	    {
-	    	g2d.setColor(tierraSombra);
-		    g2d.fillArc(0+i, 580, 45, 35, 180, 180);
 	    	g2d.setColor(Color.black);
 		    g2d.fillArc(0+i, 580, 40, 30, 180, 180);
 		    g2d.setColor(pastoSombra);
@@ -368,14 +227,13 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		    g2d.setColor(pasto);
 		    g2d.fillArc(0+i, 580, 34, 24, 180, 180);
 		    g2d.setColor(tierraMancha);
-		    g2d.fillArc(0+i, 615, 8, 8, 0, 360);
-		    g2d.fillArc(-10+i, 625, 10, 10, 0, 360);
-		    g2d.fillArc(10+i, 655, 5, 5, 0, 360);
-		    g2d.fillArc(30+i, 665, 10, 10, 0, 360);
+		    g2d.fillArc(0+i, 610, 8, 8, 0, 360);
+		    g2d.fillArc(-10+i, 620, 10, 10, 0, 360);
+		    g2d.fillArc(10+i, 650, 5, 5, 0, 360);
+		    g2d.fillArc(30+i, 660, 10, 10, 0, 360);
 		    
 	    }
 	}
-	*/
 	public void calculadoraInteres() {
 	    this.setTitle("Calculadora de Interes");
 	    this.setSize(470, 420);
@@ -600,6 +458,9 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	    
 	    this.add(panel);
 	}
+
+
+
 	public void calculadora()
 	{
 		this.setTitle("Calculadora");
@@ -749,7 +610,6 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		this.add(adminPanel);
 	}
 	public void registro() {
-
 		JPanel registro= new JPanel();
 		registro.setSize(this.getWidth()/2,this.getHeight());
 		registro.setLocation(460, 0);
@@ -769,12 +629,12 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		usuarioR.setFont(new Font("Arial",Font.BOLD,16));
 		usuarioR.setBackground(new Color(90, 101, 241));
 		usuarioR.setSize(200,30);
-		usuarioR.setLocation(130,100);
+		usuarioR.setLocation(130,150);
 		usuarioR.setOpaque(true);
 		registro.add(usuarioR);
 		
 		JTextField nombreUsuarioR=new JTextField();
-		nombreUsuarioR.setBounds(130, 130, 200, 30);
+		nombreUsuarioR.setBounds(130, 180, 200, 30);
 		nombreUsuarioR.setHorizontalAlignment(0);
 		registro.add(nombreUsuarioR);
 		
@@ -782,36 +642,36 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		bio.setFont(new Font("Arial",Font.BOLD,16));
 		bio.setBackground(new Color(90, 101, 241));
 		bio.setSize(200,30);
-		bio.setLocation(130,160);
+		bio.setLocation(130,210);
 		bio.setOpaque(true);
 		registro.add(bio);
 		
 		JTextArea bioUser=new JTextArea();
-		bioUser.setBounds(130, 190, 200, 80);
+		bioUser.setBounds(130, 240, 200, 80);
 		registro.add(bioUser);
 		
 		JLabel preferencias=new JLabel("Preferencias",0);
 		preferencias.setFont(new Font("Arial",Font.BOLD,16));
 		preferencias.setBackground(new Color(90, 101, 241));
 		preferencias.setSize(200,30);
-		preferencias.setLocation(130,270);
+		preferencias.setLocation(130,320);
 		preferencias.setOpaque(true);
 		registro.add(preferencias);
 		
 		JCheckBox item_box=new JCheckBox("Dulces");
-		item_box.setBounds(130, 300, 70, 30);
+		item_box.setBounds(130, 350, 70, 30);
 		item_box.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box.setOpaque(false);
 		registro.add(item_box);
 		
 		JCheckBox item_box1=new JCheckBox("Salado");
-		item_box1.setBounds(190, 300, 70, 30);
+		item_box1.setBounds(190, 350, 70, 30);
 		item_box1.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box1.setOpaque(false);
 		registro.add(item_box1);
 		
 		JCheckBox item_box2=new JCheckBox("Saludable");
-		item_box2.setBounds(250, 300, 90, 30);
+		item_box2.setBounds(250, 350, 90, 30);
 		item_box2.setFont(new Font("Sitka", Font.BOLD,12));
 		item_box2.setOpaque(false);
 		registro.add(item_box2);
@@ -820,18 +680,18 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		terminos.setFont(new Font("Arial",Font.BOLD,14));
 		terminos.setBackground(new Color(90, 101, 241));
 		terminos.setSize(200,30);
-		terminos.setLocation(130,330);
+		terminos.setLocation(130,380);
 		terminos.setOpaque(true);
 		registro.add(terminos);
 		
 		JRadioButton aceptTerminos=new JRadioButton("Aceptar");
-		aceptTerminos.setBounds(130,360,80, 30);
+		aceptTerminos.setBounds(130,410,80, 30);
 		aceptTerminos.setFont(new Font("Arial",Font.BOLD,14));
 		aceptTerminos.setOpaque(false);
 		registro.add(aceptTerminos);
 		
 		JRadioButton noAceptTerminos=new JRadioButton("No acepto");
-		noAceptTerminos.setBounds(230,360,110, 30);
+		noAceptTerminos.setBounds(230,410,110, 30);
 		noAceptTerminos.setFont(new Font("Arial",Font.BOLD,14));
 		noAceptTerminos.setOpaque(false);
 		registro.add(noAceptTerminos);
@@ -843,51 +703,18 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		String colonia[]={"Centro","Pedregal", "Camino Real","Tabachines"};
 		JComboBox locacion=new JComboBox(colonia);
 		
-		locacion.setBounds(130, 390, 200, 30);
+		locacion.setBounds(130, 440, 200, 30);
 		locacion.setFont(new Font("Arial",Font.BOLD,14));
 		locacion.setOpaque(false);
 		registro.add(locacion);
 		
-		JButton registroAceptar=new JButton("Registrarse");
-		registroAceptar.setBounds(160, 450, 140, 30);
-		registroAceptar.setBackground(new Color(90, 101, 241));
-		registroAceptar.setForeground(Color.black);
-		registro.add(registroAceptar);
-		
-		registroAceptar.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String usr = nombreUsuarioR.getText();
-				String bio = bioUser.getText();
-				if (usr.length()<=0)
-				{
-					nombreUsuarioR.setBorder(BorderFactory.createLineBorder(Color.red,5));
-				} else {
-					nombreUsuarioR.setBorder(BorderFactory.createLineBorder(Color.green,5));
-				}
-				if(bio.length()<=0) {
-					bioUser.setBorder(BorderFactory.createLineBorder(Color.red,5));
-				} else
-				{
-					bioUser.setBorder(BorderFactory.createLineBorder(Color.green,5));
-				}
-				if(!aceptTerminos.isSelected()) {
-					aceptTerminos.setBorderPainted(true);
-					aceptTerminos.setBorder(BorderFactory.createLineBorder(Color.red,3));
-				}
-				else {
-					aceptTerminos.setBorderPainted(true);
-					aceptTerminos.setBorder(BorderFactory.createLineBorder(Color.green,3));
-				}
-			}});
 		this.add(registro);
 	}
 	public void login()
 	{
+		this.setSize(460, 560);
 		JPanel login= new JPanel();
-		login.setSize(this.getWidth()/2,this.getHeight());
+		login.setSize(this.getWidth(),this.getHeight());
 		login.setBackground(new Color(109, 115, 243));
 		login.setLayout(null);
 		
@@ -940,7 +767,19 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		JLabel candado=new JLabel();
 		candado.setIcon(new ImageIcon(getClass().getResource("candado.png")));
 		candado.setBounds(128, 280, 30, 30);
-		login.add(candado);		
+		login.add(candado);
+		
+		/*JCheckBox recordarme=new JCheckBox("Recordarme");
+		recordarme.setFont(new Font("Arial",Font.BOLD,10));
+		recordarme.setBounds(126, 300, 100, 50);
+		recordarme.setOpaque(false);
+		login.add(recordarme);
+		
+		JLabel olvidoContraseña=new JLabel("¿Olvido su contraseña?");
+		olvidoContraseña.setBounds(226, 310, 140, 30);
+		olvidoContraseña.setFont(new Font("Arial",Font.BOLD,10));
+		olvidoContraseña.setOpaque(false);
+		login.add(olvidoContraseña);*/
 		
 		JButton iniciar=new JButton("Iniciar Sesion");
 		iniciar.setBounds(160, 350, 140, 30);
@@ -967,315 +806,7 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		fondoInicio.setBackground(new Color(61, 64, 145));
 		login.add(fondoInicio);
 		
-		sinCuenta.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-			
-		});
-		iniciar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String usr=nombreUsuario.getText();
-				String psw= new String(contraUsuario.getPassword());
-				if(usr.length()<=0)
-				{
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-				}else {
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
-				}
-				if(psw.length()<=0) {
-					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-				}else
-				{
-					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
-				}
-				if (usr.equals("SuperUser"))
-				{
-					//System.out.println(pwd);
-					if(psw.equals("SuperPass")) {
-						System.out.println("Bienvenido");
-					}
-				} else
-				{
-					System.out.println("Usuario no encontrado");
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-					
-				}
-			//	System.out.println();
-				}
-			
-			
-		});
-		
 		this.add(login);
 	}
-	public void botones() 
-	{
-		this.setSize(500,700);
-		this.setLocationRelativeTo(null);
-	 	
-		adminPanel.setSize(this.getWidth(),this.getHeight());
-		adminPanel.setLocation(0, 0);
-		adminPanel.setOpaque(true);
-		adminPanel.setLayout(null);
-		adminPanel.setBackground(new Color(203, 255, 242));
-		
-		JButton super_boton=new JButton("Dale Click");
-		super_boton.setBounds(180, 600, 140, 50);
-		super_boton.setBackground(new Color(90, 101, 241));
-		super_boton.setForeground(Color.black);
-		super_boton.setFocusable(false);
-		adminPanel.add(super_boton);
-		
-		super_boton.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				int x=(int)Math.floor(Math.random()*450+1);
-				int y=(int)Math.floor(Math.random()*650+1);
-
-				int w=(int)Math.floor(Math.random()*120+20);
-				int h=(int)Math.floor(Math.random()*120+20);
-
-				int r=(int)Math.floor(Math.random()*255+1);
-				int g=(int)Math.floor(Math.random()*255+1);
-				int b=(int)Math.floor(Math.random()*255+1);
-				
-				JButton otroBoton=new JButton(r+","+g+","+b);
-				otroBoton.setBounds(x, y, w, h);
-				otroBoton.setOpaque(true);
-				otroBoton.setBackground(new Color(r, g, b));
-				otroBoton.setForeground(Color.black);
-				otroBoton.setFocusable(false);
-				adminPanel.add(otroBoton);
-				
-				getContentPane().repaint();
-				getContentPane().revalidate();
-				
-				otroBoton.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-						JButton yo=((JButton) e.getSource());
-						//JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
-						adminPanel.remove(yo);
-						
-						getContentPane().repaint();
-						getContentPane().revalidate();
-						
-					}
-					
-				});
-			}
-			
-		});
-		this.add(adminPanel);
-	}
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		x=e.getX();
-		y=e.getY();
-		 saySomething("Mouse pressed; # of clicks: "
-                 + e.getClickCount(), e);
-	}
-
-
-	private void saySomething(String string, MouseEvent e) {
-
-		int w=(int)Math.floor(Math.random()*120+20);
-		int h=(int)Math.floor(Math.random()*120+20);
-
-		int r=(int)Math.floor(Math.random()*255+1);
-		int g=(int)Math.floor(Math.random()*255+1);
-		int b=(int)Math.floor(Math.random()*255+1);
-		
-
-		JButton otroBoton=new JButton(r+","+g+","+b);
-		otroBoton.setBounds(x-10, y-30, w, h);
-		otroBoton.setOpaque(true);
-		otroBoton.setBackground(new Color(r, g, b));
-		otroBoton.setForeground(Color.black);
-		otroBoton.setFocusable(false);
-		adminPanel.add(otroBoton);
-		
-		getContentPane().repaint();
-		getContentPane().revalidate();
-		
-		otroBoton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JOptionPane.showMessageDialog(null,"Color RGB: "+r+","+g+","+b, "Colores", JOptionPane.WARNING_MESSAGE);
-				
-			}
-			
-		});
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		saySomething("Mouse entered", e);
-		int r=(int)Math.floor(Math.random()*255+1);
-		int g=(int)Math.floor(Math.random()*255+1);
-		int b=(int)Math.floor(Math.random()*255+1);
-		
-		adminPanel.setBackground(new Color(r,g,b));
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getKeyCode()+" "+e.getKeyChar());
-		if(e.getKeyCode()==8)
-		{
-			adminPanel.removeAll();
-
-			getContentPane().repaint();
-			getContentPane().revalidate();
-		}
-		if(e.getKeyCode()==87)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setSize(btn.getHeight()+10,btn.getWidth()+10);
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-		if(e.getKeyCode()==83)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setSize(btn.getHeight()-10,btn.getWidth()-10);
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-		if(e.getKeyCode()==38)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setLocation(btn.getX(),btn.getY()-10);
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-		if(e.getKeyCode()==40)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setLocation(btn.getX(),btn.getY()+10);
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-		if(e.getKeyCode()==37)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setLocation(btn.getX()-10,btn.getY());
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-		if(e.getKeyCode()==39)
-		{
-			Component[] elementos=adminPanel.getComponents();
-			for(int i=0; i<elementos.length; i++)
-			{
-				if(elementos[i].getClass().toString().equals("class javax.swing.JButton"))
-				{
-					JButton btn=((JButton) elementos[i]);
-					btn.setLocation(btn.getX()+10,btn.getY());
-
-					getContentPane().repaint();
-					getContentPane().revalidate();
-				} 
-			}
-			
-		}
-	}
-
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }

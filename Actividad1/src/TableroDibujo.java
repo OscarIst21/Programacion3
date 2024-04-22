@@ -80,6 +80,7 @@ public class TableroDibujo extends JFrame implements KeyListener {
         movimientoTimer.start();
     }
     public void iniciarComponentes() {
+        generarObstaculos();
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(new BorderLayout());
@@ -178,7 +179,6 @@ public class TableroDibujo extends JFrame implements KeyListener {
 
         this.repaint();
         this.add(panel);
-        generarObstaculos();
     }
 
     private void generarObstaculos() {

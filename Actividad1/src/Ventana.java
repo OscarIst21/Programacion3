@@ -37,7 +37,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.io.File; 
+import java.io.IOException; 
+import org.json.*;
+import java.io.FileReader;
 public class Ventana extends JFrame implements MouseListener, KeyListener{
 	//Define los valores base de mi ventana.
 	JPanel adminPanel=new JPanel();
@@ -45,7 +48,7 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 
 	public Ventana() {
 		this.setTitle("no");
-		this.setSize(920, 560);
+		this.setSize(460, 560);
 		this.setLocation(120, 120);
 		
 		this.setLocationRelativeTo(null);
@@ -62,8 +65,8 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	
 	
 	public void iniciarComponentes() {
-		//this.login();
-		this.registro();
+		this.login();
+		//this.registro();
 		//this.admin();
 		//this.calculadora();
 		//this.calculadoraInteres();
@@ -887,7 +890,7 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	public void login()
 	{
 		JPanel login= new JPanel();
-		login.setSize(this.getWidth()/2,this.getHeight());
+		login.setSize(this.getWidth(),this.getHeight());
 		login.setBackground(new Color(109, 115, 243));
 		login.setLayout(null);
 		
@@ -982,32 +985,21 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 				// TODO Auto-generated method stub
 				String usr=nombreUsuario.getText();
 				String psw= new String(contraUsuario.getPassword());
-				if(usr.length()<=0)
-				{
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-				}else {
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
-				}
-				if(psw.length()<=0) {
-					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-				}else
-				{
-					contraUsuario.setBorder(BorderFactory.createLineBorder(Color.green,2));
-				}
-				if (usr.equals("SuperUser"))
-				{
-					//System.out.println(pwd);
-					if(psw.equals("SuperPass")) {
-						System.out.println("Bienvenido");
-					}
-				} else
-				{
-					System.out.println("Usuario no encontrado");
-					nombreUsuario.setBorder(BorderFactory.createLineBorder(Color.red,2));
-					
-				}
-			//	System.out.println();
-				}
+				try 
+				 {
+					 FileReader reader = new FileReader("src/usuario.json");
+					 JSONObject jsonObject = new JSONObject(new JSONTokener(reader));
+					 String user=jsonObject.getString("usuario");
+					 String contrasena=jsonObject.getString("contrasena");
+					 System.out.println("Usuario: "+ user);
+					 System.out.println("contraseña: "+contrasena);
+			         reader.close();
+				 } catch (IOException f)  {
+			            f.printStackTrace();
+			     } catch (JSONException g) {
+			            g.printStackTrace();
+			     }
+		    }
 			
 			
 		});
@@ -1277,5 +1269,6 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	
 	}
 }

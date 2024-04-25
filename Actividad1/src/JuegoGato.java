@@ -19,7 +19,7 @@ public class JuegoGato extends JFrame {
     String ganador = "hola";
     JLabel text;
     JLabel logo = new JLabel();
-
+ 
     public JuegoGato() {
         this.setTitle("Juego del gato");
         this.setSize(560, 590);

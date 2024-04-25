@@ -32,7 +32,7 @@ public class TableroDibujo extends JFrame implements KeyListener {
     Sonido musicaFondo = new Sonido("src/musicaFondo.wav");
     int direccionActual=0;
     int choques=0;
-    int sustos=0;
+    int sustos=0; 
     private boolean sonidoEncendido = true; 
     JPanel tablero;
 	JLabel susto=new JLabel();

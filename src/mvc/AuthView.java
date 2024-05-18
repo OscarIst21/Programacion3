@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -79,9 +80,10 @@ public class AuthView {
 	        public void actionPerformed(ActionEvent e) {
 	            String contraseña = new String(contraseñaField.getPassword());
 	            if(modelo.login(usuarioField.getText(),contraseña)){
-	            	System.out.println("Bienvenido");
+	            	JOptionPane.showMessageDialog(null, "Bienvenido");
+	                
 	            }else {
-	            	System.out.println("r");
+	                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error", JOptionPane.WARNING_MESSAGE);
 	            }
 	            
 	        }

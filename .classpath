@@ -7,5 +7,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Oscar/Downloads/json-20240303.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Oscar/Downloads/Programacion3-main/Programacion3-main/Actividad1/AdvancedSQL.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

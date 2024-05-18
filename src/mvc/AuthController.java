@@ -23,4 +23,12 @@ public class AuthController {
 		frame.revalidate();
 		
 	}
+	public void registro() {
+		frame.add(view.registro());
+		frame.setVisible(true);
+		frame.repaint();
+		frame.revalidate();
+		
+	}
 }
+
